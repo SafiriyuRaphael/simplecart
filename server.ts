@@ -13,8 +13,12 @@ const app = express();
 connectDB();
 
 app.use(express.json());
-app.use(cors());
-app.options("*", cors())
+app.use(
+    cors({
+        origin: ["*"],
+        methods: ["GET", "POST", "PUT", "DELETE"],
+    })
+);
 
 
 setupSwagger(app);
